@@ -8,7 +8,7 @@ export const metadata = {
   title: 'Airbnb',
   description: 'Airbnb clone',
 }
-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
+
 export default function RootLayout({
   children,
 }: {
