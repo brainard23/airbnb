@@ -14,6 +14,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
+import { toast } from "react-hot-toast";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -41,6 +42,7 @@ const RegisterModal = () => {
             })
             .catch((error) => {
                 console.log(error)
+                toast.error('Something went wrong!')
             })
             .finally(() => {
                 setIsLoading(false)
@@ -56,6 +58,23 @@ const RegisterModal = () => {
             <Input
             id="email"
             label="Email"
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required
+            />
+              <Input
+            id="name"
+            label="Name"
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required
+            />
+              <Input
+            id="password"
+            label="Password"
+            type="password"
             disabled={isLoading}
             register={register}
             errors={errors}
