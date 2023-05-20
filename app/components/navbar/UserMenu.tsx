@@ -5,7 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 // import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-// import useLoginModal from "@/app/hooks/useLoginModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 // import useRentModal from "@/app/hooks/useRentModal";
 // import { SafeUser } from "@/app/types";
@@ -22,7 +22,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 }) => {
   const router = useRouter();
 
-//   const loginModal = useLoginModal();
+  const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
 //   const rentModal = useRentModal();
 
@@ -32,13 +32,13 @@ const UserMenu: React.FC<UserMenuProps> = ({
     setIsOpen((value) => !value);
   }, []);
 
-//   const onRent = useCallback(() => {
-//     if (!currentUser) {
-//       return loginModal.onOpen();
-//     }
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
 
-//     rentModal.onOpen();
-//   }, [loginModal, rentModal, currentUser]);
+    // rentModal.onOpen();
+  }, [loginModal, currentUser]);
 
   return ( 
     <div className="relative">
@@ -132,7 +132,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
               <>
                 <MenuItem 
                   label="Login" 
-                //   onClick={loginModal.onOpen}
+                  onClick={loginModal.onOpen}
                 />
                 <MenuItem 
                   label="Sign up" 
