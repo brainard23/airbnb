@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-// import { signOut } from "next-auth/react";
+import { signOut as logOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
@@ -125,7 +125,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 <hr />
                 <MenuItem 
                   label="Logout" 
-                  // onClick={() => signOut()}
+                  onClick={() => logOut()}
                 />
               </>
             ) : (
