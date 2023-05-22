@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-// import useRentModal from "@/app/hooks/useRentModal";
+import useRentModal from "@/app/hooks/useRentModal";
 
 import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
@@ -24,7 +24,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
 
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
-  //   const rentModal = useRentModal();
+  const rentModal = useRentModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,14 +37,14 @@ const UserMenu: React.FC<UserMenuProps> = ({
       return loginModal.onOpen();
     }
 
-    // rentModal.onOpen();
-  }, [loginModal, currentUser]);
-  console.log(currentUser?.image)
+    rentModal.onOpen();
+  }, [loginModal, currentUser, rentModal]);
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          //   onClick={onRent}
+          onClick={onRent}
           className="
             hidden
             md:block
@@ -120,7 +120,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 />
                 <MenuItem 
                   label="Airbnb your home" 
-                  // onClick={rentModal.onOpen}
+                  onClick={rentModal.onOpen}
                 />
                 <hr />
                 <MenuItem 
