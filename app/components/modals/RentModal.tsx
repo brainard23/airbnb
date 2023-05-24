@@ -8,7 +8,8 @@ import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
-import Map from "../Map";
+import dynamic from "next/dynamic";
+import Counter from "../inputs/Counter";
 
 enum STEPS {
     CATEGORY = 0,
@@ -39,7 +40,7 @@ const RentModal = () => {
             location: null,
             guestCount: 1,
             roomCount: 1,
-            bacthroomCount: 1,
+            bathroomCount: 1,
             imageSrc: '',
             price: 1,
             title: '',
@@ -49,7 +50,13 @@ const RentModal = () => {
 
     const category = watch('category');
     const location = watch('location');
-
+    const guestCount = watch('guestCount');
+    const roomCount = watch('roomCount');
+    const bathroomCount = watch('bathroomCount');
+    /// rerenders Map component everytime location is changed 
+    const Map = useMemo(() => dynamic(() => import('../Map'), {
+        ssr: false
+    }), [location])
     //if category is selected it will highligh the category selected 
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
@@ -116,7 +123,35 @@ const RentModal = () => {
                 <CountrySelect
                     value={location}
                     onChange={(value) => setCustomValue('location', value)} />
-                <Map />
+                <Map center={location?.latlng} />
+            </div>
+        )
+    }
+
+    if (step === STEPS.INFO) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="Share some basics about your place"
+                    subtitle="what amenities do you have?"
+                />
+                <Counter 
+                value={guestCount}
+                title="Guest" 
+                subtitle="How many guests do you allow?" 
+                onChange={(value) => setCustomValue('guestCount', value)} />
+                <hr />
+                <Counter 
+                value={roomCount}
+                title="Room" 
+                subtitle="How many room do you have?" 
+                onChange={(value) => setCustomValue('roomCount', value)} />
+                <hr/>
+                <Counter 
+                value={bathroomCount}
+                title="Bathroom" 
+                subtitle="How many bathroom do you have?" 
+                onChange={(value) => setCustomValue('bathroomCount', value)} />
             </div>
         )
     }
