@@ -1,10 +1,14 @@
+import getCurrentUser from "./actions/getCurrentUsers";
 import getListings from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
+import ListingCard from "./components/listings/ListingCard";
 
 export default async function Home() {
   const listings = await getListings();
+  const currentUser = getCurrentUser();
+
   if (listings.length === 0) {
     return (
       <ClientOnly>
@@ -18,7 +22,7 @@ export default async function Home() {
         <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
           <div>{listings.map((listing: any) => {
             return (
-              <div key={listing.id}>{listing.title}</div>
+              <ListingCard currentUser={currentUser} id={listing.id} data={listing} />
             )
           }
           )}</div>
