@@ -7,6 +7,7 @@ import { useCallback, useMemo } from "react";
 import { format } from 'date-fns';
 import Image from "next/image";
 import HeartButton from "../HeartButton";
+import Button from "../Button";
 
 
 interface ListingCardProps {
@@ -14,7 +15,7 @@ interface ListingCardProps {
     reservation?: Reservation,
     data: Listing;
     actionId?: string;
-    onAction: (id: string) => void;
+    onAction?: (id: string) => void;
     disabled?: boolean;
     actionLabel?: string;
 
@@ -54,7 +55,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         return data.price
     }, [reservation, data.price])
 
-    const reservationData = useMemo(() => {
+    const reservationDate = useMemo(() => {
         if (!reservation) {
             return null
         }
@@ -84,6 +85,28 @@ const ListingCard: React.FC<ListingCardProps> = ({
                         />
                     </div>
                 </div>
+                <div className="font-semibold text-lg">
+                    {location?.region}, {location?.label}
+                </div>
+                <div className="font-light text-neutral-500">
+                    {reservationDate || data.category}
+                </div>
+                <div className="flex flex-row items-center gap-1">
+                    <div className="font-semibold">
+                        $ {price}
+                    </div>
+                    {!reservation && (
+                        <div className="font-light">night</div>
+                    )}
+                </div>
+                {onAction && actionLabel && (
+                    <Button 
+                        disabled={disabled}
+                        small
+                        label={actionLabel}
+                        onClick={handleCancel}
+                    />
+                )}
             </div>
         </div>
     )
