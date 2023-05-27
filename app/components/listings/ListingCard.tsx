@@ -10,15 +10,14 @@ import HeartButton from "../HeartButton";
 import Button from "../Button";
 
 
-interface ListingCardProps {
-    currentUser: SafeUser | null,
-    reservation?: Reservation,
+interface ListingCardProps {    
     data: Listing;
-    actionId?: string;
+    reservation?: Reservation;
     onAction?: (id: string) => void;
     disabled?: boolean;
     actionLabel?: string;
-
+    actionId?: string;
+    currentUser?: SafeUser | null
 }
 
 const ListingCard: React.FC<ListingCardProps> = ({

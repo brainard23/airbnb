@@ -7,27 +7,23 @@ import ListingCard from "./components/listings/ListingCard";
 
 export default async function Home() {
   const listings = await getListings();
-  const currentUser = getCurrentUser();
+  const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
     return (
-      <ClientOnly>
-        <EmptyState showReset />
-      </ClientOnly>
+      <EmptyState showReset />
     )
   }
   return (
-    <ClientOnly>
-      <Container>
-        <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {listings.map((listing: any) => {
-            return (
-              <ListingCard currentUser={currentUser} id={listing.id} data={listing} />
-            )
-          }
-          )}
-        </div>
-      </Container>
-    </ClientOnly>
+    <Container>
+      <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {listings.map((listing: any) => {
+          return (
+            <ListingCard currentUser={currentUser} key={listing.id} data={listing} />
+          )
+        }
+        )}
+      </div>
+    </Container>
   )
 }
