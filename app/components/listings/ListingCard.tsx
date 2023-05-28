@@ -1,6 +1,6 @@
 'use client';
 import useCountries from "@/app/hooks/useCountries";
-import { SafeUser } from "@/app/types";
+import { SafeListing, SafeUser } from "@/app/types";
 import { Listing, Reservation, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -8,10 +8,11 @@ import { format } from 'date-fns';
 import Image from "next/image";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
+import { AiFillStar } from "react-icons/ai";
 
 
-interface ListingCardProps {    
-    data: Listing;
+interface ListingCardProps {
+    data: SafeListing;
     reservation?: Reservation;
     onAction?: (id: string) => void;
     disabled?: boolean;
@@ -84,8 +85,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
                         />
                     </div>
                 </div>
-                <div className="font-semibold text-lg">
-                    {location?.region}, {location?.label}
+                <div className="font-semibold text-lg flex justify-between items-center">
+                    <div>{location?.region}, {location?.label}</div>
+                    <div className="flex items-center"><AiFillStar /> 5.0 </div>
                 </div>
                 <div className="font-light text-neutral-500">
                     {reservationDate || data.category}
@@ -99,7 +101,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
                     )}
                 </div>
                 {onAction && actionLabel && (
-                    <Button 
+                    <Button
                         disabled={disabled}
                         small
                         label={actionLabel}
