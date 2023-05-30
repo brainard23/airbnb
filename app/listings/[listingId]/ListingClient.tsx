@@ -9,6 +9,7 @@ import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 
 interface ListingClientProps {
+    
     reservation?: Reservation[];
     listing: SafeListing & {
         user: SafeUser
