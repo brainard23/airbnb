@@ -8,6 +8,12 @@ import { useMemo } from "react";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 
+const intialDateRange = {
+    startDate: new Date(),
+    endDate: new Date(), 
+    key: 'selection'
+}
+
 interface ListingClientProps {
     
     reservation?: Reservation[];
