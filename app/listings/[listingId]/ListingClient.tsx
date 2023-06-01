@@ -4,12 +4,12 @@ import Container from "@/app/components/Container";
 import { categories } from "../../../app/components/navbar/Categories";
 import { SafeListing, SafeUser } from "@/app/types";
 import { Reservation } from "@prisma/client"
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { useRouter } from "next/navigation";
-import { eachDayOfInterval } from "date-fns";
+import { differenceInDays, eachDayOfInterval } from "date-fns";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
@@ -89,11 +89,27 @@ const ListingClient: React.FC<ListingClientProps> = ({
         loginModal
     ])
 
+    useEffect(() => {
+        if (dateRange.startDate && dateRange.endDate) {
+            //give number of days
+            const dayCount = differenceInDays(
+                dateRange.endDate,
+                dateRange.startDate
+            );
+
+            if (dayCount && listing.price) {
+                setTotalPrice(dayCount * listing.price);
+            } else {
+                setTotalPrice(listing.price)
+            }
+        }
+    }, [])
+
     const category = useMemo(() => {
         return categories.find((item) =>
             item.label === listing.category);
     }, [listing.category])
-    console.log(listing)
+
     return (
         <Container >
             <div className="max-w-screen-lg mx-auto">
