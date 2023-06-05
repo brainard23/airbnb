@@ -6,7 +6,7 @@ import { Reservation } from "@prisma/client"
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useRouter } from "next/navigation";
-import { differenceInDays, eachDayOfInterval } from "date-fns";
+import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
@@ -15,6 +15,7 @@ import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import Container from "@/app/components/Container";
 import { categories } from "../../../app/components/navbar/Categories";
+import ListingReservation from "@/app/components/listings/ListingReservation";
 
 const initialDateRange = {
     startDate: new Date(),
@@ -59,7 +60,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     const [totalPrice, setTotalPrice] = useState(listing.price);
     const [dateRange, setDateRange] = useState(initialDateRange);
 
-    const onCreate = useCallback(() => {
+    const onCreateReservation = useCallback(() => {
         if (!currentUser) {
             return loginModal.onOpen();
         }
@@ -95,7 +96,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     useEffect(() => {
         if (dateRange.startDate && dateRange.endDate) {
             //give number of days
-            const dayCount = differenceInDays(
+            const dayCount = differenceInCalendarDays(
                 dateRange.endDate,
                 dateRange.startDate
             );
@@ -106,7 +107,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 setTotalPrice(listing.price)
             }
         }
-    }, [])
+    }, [dateRange, listing.price])
 
     const category = useMemo(() => {
         return categories.find((item) =>
@@ -135,7 +136,18 @@ const ListingClient: React.FC<ListingClientProps> = ({
                         bathroomCount={listing.bathroomCount}
                         locationValue={listing.locationValue}
                     />
+                    <div className="order-first mb-10 md:order-last md:col-span-3">
+                        <ListingReservation
+                            price={listing.price}
+                            totalPrice={totalPrice}
+                            onChangeDate={(value) => setDateRange(value)}
+                            dateRange={dateRange}
+                            onSubmit={onCreateReservation}
+                            disabled={isLoading}
+                            disabledDate={disabledDate}
+                        />
 
+                    </div>
                 </div>
             </div>
         </Container>
