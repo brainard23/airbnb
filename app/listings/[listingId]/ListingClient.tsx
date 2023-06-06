@@ -16,7 +16,7 @@ import ListingInfo from "@/app/components/listings/ListingInfo";
 import Container from "@/app/components/Container";
 import { categories } from "../../../app/components/navbar/Categories";
 import ListingReservation from "@/app/components/listings/ListingReservation";
-import { Range } from "react-date-range";
+import { Range } from 'react-date-range';
 
 const initialDateRange = {
     startDate: new Date(),
