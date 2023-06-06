@@ -13,7 +13,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import Container from "@/app/components/Container";
-import { categories } from "../../../app/components/navbar/Categories";
+import { categories } from "../../components/navbar/Categories";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 import { Range } from 'react-date-range';
 
