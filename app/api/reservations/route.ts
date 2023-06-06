@@ -21,10 +21,10 @@ export async function POST(
         totalPrice,
     } = body;
 
-    if (!listingId || !startDate || !endDate || totalPrice) {
+    if (!listingId || !startDate || !endDate || !totalPrice) {
         return NextResponse.error();
     }
-    const listingAndReservation = await prisma.listing.update({
+    const listingAndReservation = await prisma?.listing.update({
         where: {
             id: listingId,
         },
