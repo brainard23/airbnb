@@ -15,11 +15,11 @@ const TripsPage = async () => {
     );
   }
 
-  const reservation = await getReservations({
+  const reservations = await getReservations({
     userId: currentUser.id,
   });
-
-  if (reservation.length === 0) {
+  
+  if (reservations.length === 0) {
     return (
       <ClientOnly>
         <EmptyState
@@ -32,9 +32,9 @@ const TripsPage = async () => {
 
   return (
     <ClientOnly>
-      <TripsClient reservation={reservation} currentUser={currentUser} />
+      <TripsClient reservations={reservations} currentUser={currentUser} />
     </ClientOnly>
   );
-};
+};  
 
 export default TripsPage;
