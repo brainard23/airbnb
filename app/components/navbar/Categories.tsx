@@ -1,127 +1,104 @@
-'use client';
+"use client";
 
-import {
-    GiBarn,
-    GiBoatFishing,
-    GiCactus,
-    GiCastle,
-    GiCaveEntrance,
-    GiForestCamp,
-    GiIsland,
-    GiWindmill
-} from 'react-icons/gi';
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
-import { FaSkiing } from 'react-icons/fa';
-import { BsSnow } from 'react-icons/bs';
-import { IoDiamond } from 'react-icons/io5';
-import { MdOutlineVilla } from 'react-icons/md';
+import toyota from "../../../public/images/toyota.svg";
+import nissan from "../../../public/images/nissan.svg";
+import ford from "../../../public/images/ford.svg";
+import tesla from "../../../public/images/tesla.svg";
+import suzuki from "../../../public/images/suzuki.svg";
+import chevrolet from "../../../public/images/chevrolet.svg";
+import honda from "../../../public/images/honda.svg";
+import mazda from "../../../public/images/mazda.svg";
+import bmw from "../../../public/images/bmw.svg";
+import mercedes from "../../../public/images/mercedes.svg";
+import kia from "../../../public/images/kia.svg";
+
 import CategoryBox from "../CatigoriesBox";
-import Container from "../Container"
-import { usePathname, useSearchParams } from 'next/navigation';
+import Container from "../Container";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export const categories = [
-    {
-        label: 'Beach',
-        icon: TbBeach,
-        description: 'This property is close to the beach!',
-    },
-    {
-        label: 'Windmills',
-        icon: GiWindmill,
-        description: 'This property is has windmills!',
-    },
-    {
-        label: 'Modern',
-        icon: MdOutlineVilla,
-        description: 'This property is modern!'
-    },
-    {
-        label: 'Countryside',
-        icon: TbMountain,
-        description: 'This property is in the countryside!'
-    },
-    {
-        label: 'Pools',
-        icon: TbPool,
-        description: 'This is property has a beautiful pool!'
-    },
-    {
-        label: 'Islands',
-        icon: GiIsland,
-        description: 'This property is on an island!'
-    },
-    {
-        label: 'Lake',
-        icon: GiBoatFishing,
-        description: 'This property is near a lake!'
-    },
-    {
-        label: 'Skiing',
-        icon: FaSkiing,
-        description: 'This property has skiing activies!'
-    },
-    {
-        label: 'Castles',
-        icon: GiCastle,
-        description: 'This property is an ancient castle!'
-    },
-    {
-        label: 'Caves',
-        icon: GiCaveEntrance,
-        description: 'This property is in a spooky cave!'
-    },
-    {
-        label: 'Camping',
-        icon: GiForestCamp,
-        description: 'This property offers camping activities!'
-    },
-    {
-        label: 'Arctic',
-        icon: BsSnow,
-        description: 'This property is in arctic environment!'
-    },
-    {
-        label: 'Desert',
-        icon: GiCactus,
-        description: 'This property is in the desert!'
-    },
-    {
-        label: 'Barns',
-        icon: GiBarn,
-        description: 'This property is in a barn!'
-    },
-    {
-        label: 'Lux',
-        icon: IoDiamond,
-        description: 'This property is brand new and luxurious!'
-    }
-]
+  {
+    label: "Toyota",
+    icon: toyota,
+    description: "This category is for toyora cars",
+  },
+  {
+    label: "Nissan",
+    icon: nissan,
+    description: "This category is for nissan cars",
+  },
+  {
+    label: "Ford",
+    icon: ford,
+    description: "This category is for ford cars",
+  },
+  {
+    label: "Tesla",
+    icon: tesla,
+    description: "This category is for tesla cars",
+  },
+  {
+    label: "Suzuki",
+    icon: suzuki,
+    description: "This category is for suzuki cars",
+  },
+  {
+    label: "Chevrolet",
+    icon: chevrolet,
+    description: "This category is for chevrolet cars",
+  },
+  {
+    label: "Honda",
+    icon: honda,
+    description: "This category is for honda cars",
+  },
+  {
+    label: "Mazda",
+    icon: mazda,
+    description: "This category is for mazda cars",
+  },
+  {
+    label: "BMW",
+    icon: bmw,
+    description: "This category is for bmw cars",
+  },
+  {
+    label: "Mercedes",
+    icon: mercedes,
+    description: "This category is for mercedes cars",
+  },
+  {
+    label: "KIA",
+    icon: kia,
+    description: "This category is for kia cars",
+  },
+];
 
 const Categories = () => {
-    const params = useSearchParams();
-    const category = params?.get('category');
-    const pathName = usePathname();
+  const params = useSearchParams();
+  const category = params?.get("category");
+  const pathName = usePathname();
 
-    const isMainPage = pathName === '/'
-    if (!isMainPage) {
-        return null;
-    }
-    
-    return (
+  const isMainPage = pathName === "/";
+  if (!isMainPage) {
+    return null;
+  }
 
-        <Container>
-            <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
-                {categories.map((item) => (
-                    <CategoryBox
-                        key={item.label}
-                        label={item.label}
-                        icon={item.icon}
-                        selected={category === item.label}
-                    />
-                ))}
-            </div>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
+        {categories.map((item) => (
+          <CategoryBox
+            key={item.label}
+            description={item.description}
+            label={item.label}
+            icon={item.icon}
+            selected={category === item.label}
+          />
+        ))}
+      </div>
+    </Container>
+  );
+};
 
-export default Categories
+export default Categories;

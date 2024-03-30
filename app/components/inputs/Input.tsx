@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = ({ id, label, type = 'text', disabled, forma
                 {...register(id, { required })}
                 placeholder=' '
                 type={type}
-                className={`peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ${formatPrice ? 'pl-9' : 'pl-4'} ${errors[id] ? 'border-rose-500' : 'border-neutral-300'} ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}`}
+                className={`peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed ${formatPrice ? 'pl-9' : 'pl-4'} ${errors[id] ? 'border-black' : 'border-neutral-300'} ${errors[id] ? 'focus:border-black' : 'focus:border-black'}`}
             />
             <label
                 className={`
@@ -45,7 +45,7 @@ const Input: React.FC<InputProps> = ({ id, label, type = 'text', disabled, forma
           peer-placeholder-shown:translate-y-0 
           peer-focus:scale-75
           peer-focus:-translate-y-4
-          ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
+          ${errors[id] ? 'text-black' : 'text-zinc-400'}
         `}>
                 {label}
             </label>

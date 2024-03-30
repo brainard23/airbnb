@@ -126,7 +126,7 @@ const LoginModal = () => {
               font-light
             "
       >
-        <p>New to Airbnb?
+        <p>New to MyRide?
           <span
             onClick={onToggle}
             className="

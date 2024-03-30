@@ -163,13 +163,13 @@ const RentModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading
-                    title="Share some basics about your place"
+                    title="Share some basics about your car"
                     subtitle="what amenities do you have?"
                 />
                 <Counter
                     value={guestCount}
                     title="Guest"
-                    subtitle="How many guests do you allow?"
+                    subtitle="How many are you in the trip?"
                     onChange={(value) => setCustomValue('guestCount', value)} />
                 <hr />
                 <Counter
@@ -256,7 +256,7 @@ const RentModal = () => {
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
             secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-            title="Airbnb your home!"
+            title="My Car"
             body={bodyContent}
         />
 

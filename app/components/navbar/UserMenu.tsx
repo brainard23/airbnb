@@ -55,7 +55,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             cursor-pointer
           "
         >
-          Airbnb your home
+          My Car
         </div>
         <div
           onClick={toggleOpen}
@@ -112,7 +112,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   onClick={() => router.push("/wishlist")}
                 />
                 <hr />
-                <MenuItem label="Airbnb your home" onClick={rentModal.onOpen} />
+                <MenuItem label="My Car" onClick={rentModal.onOpen} />
                 <MenuItem
                   label="My reservations"
                   onClick={() => router.push("/reservations")}

@@ -10,8 +10,8 @@ import RegisterModal from './components/modals/RegisterModal'
 const inter = Nunito({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Airbnb',
-  description: 'Airbnb clone',
+  title: 'my ride rental services',
+  description: 'My ride rental Services',
 }
 
 export default async function RootLayout({
