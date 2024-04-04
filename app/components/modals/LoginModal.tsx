@@ -1,15 +1,11 @@
-'use client';
+"use client";
 
 import axios from "axios";
-import { signIn } from "next-auth/react"
+import { signIn } from "next-auth/react";
 import { AiFillApple, AiFillFacebook, AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
-import {
-  FieldValues,
-  SubmitHandler,
-  useForm
-} from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 
@@ -27,50 +23,45 @@ const LoginModal = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const { register,
+  const {
+    register,
     handleSubmit,
-    formState: {
-      errors,
-    }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      email: '',
-      password: ''
-    }
+      email: "",
+      password: "",
+    },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn('credentials', {
+    signIn("credentials", {
       ...data,
       redirect: false,
-    })
-      .then((callback) => {
-        setIsLoading(false);
-        if (callback?.ok) {
-          toast.success('Welcome back!');
-          router.refresh();
-          loginModal.onClose();
-        }
+    }).then((callback) => {
+      setIsLoading(false);
+      if (callback?.ok) {
+        toast.success("Welcome back!");
+        router.refresh();
+        loginModal.onClose();
+      }
 
-        if (callback?.error) {
-          toast.error(callback.error)
-        }
-      })
-  }
+      if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
+  };
 
   const onToggle = useCallback(() => {
     loginModal.onClose();
     registerModal.onOpen();
-  }, [loginModal, registerModal])
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading
-        title="Welcome to back"
-        subtitle="Login to your account"
-      />
+      <Heading title="Welcome to back" subtitle="Login to your account" />
       <Input
         id="email"
         label="Email"
@@ -89,7 +80,7 @@ const LoginModal = () => {
         required
       />
     </div>
-  )
+  );
 
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
@@ -98,25 +89,25 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-      onClick={() => signIn('google')} 
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => signIn('github')}
+        onClick={() => signIn("github")}
       />
       <Button
         outline
         label="Continue with Facebook"
         icon={AiFillFacebook}
-      // onClick={() => signIn('github')}
+        onClick={() => signIn("github")}
       />
       <Button
         outline
         label="Continue with Apple"
         icon={AiFillApple}
-      // onClick={() => signIn('github')}
+        onClick={() => signIn("github")}
       />
       <div
         className="
@@ -126,7 +117,8 @@ const LoginModal = () => {
               font-light
             "
       >
-        <p>New to MyRide?
+        <p>
+          New to MyRide?
           <span
             onClick={onToggle}
             className="
@@ -134,11 +126,14 @@ const LoginModal = () => {
                   cursor-pointer 
                   hover:underline
                 "
-          > Create an account</span>
+          >
+            {" "}
+            Create an account
+          </span>
         </p>
       </div>
     </div>
-  )
+  );
 
   return (
     <Modal
@@ -151,7 +146,7 @@ const LoginModal = () => {
       body={bodyContent}
       footer={footerContent}
     />
-  )
-}
+  );
+};
 
-export default LoginModal
+export default LoginModal;
