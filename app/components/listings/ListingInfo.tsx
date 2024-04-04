@@ -66,7 +66,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             <div className="text-lg font-light text-neutral-500">
                 {description}
             </div>
-            <hr />
+            {/* <hr />dsadsa */}
             {/* <Map center={coordinates} /> */}
         </div>
     )
