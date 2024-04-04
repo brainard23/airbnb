@@ -107,13 +107,13 @@ const RegisterModal = () => {
         outline
         label="Continue with Facebook"
         icon={AiFillFacebook}
-        // onClick={() => signIn('github')}
+        onClick={() => signIn('github')}
       />
       <Button
         outline
         label="Continue with Apple"
         icon={AiFillApple}
-        // onClick={() => signIn('github')}
+        onClick={() => signIn('github')}
       />
       <div
         className="
