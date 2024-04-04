@@ -67,6 +67,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
                 {description}
             </div>
             {/* <hr />dsadsa */}
+            <hr />
             {/* <Map center={coordinates} /> */}
         </div>
     )
