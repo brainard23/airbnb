@@ -42,15 +42,15 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             <div className="flex flex-col gap-2">
                 <div
                     className="text-xl font-semibold flex flex-row items-center gap-2">
-                    <div>Hosted by {user?.name}</div>
+                    <div> Owner {user?.name}</div>
                     <Avatar src={user?.image} />
                 </div>
                 <div className="flex flex-row items-center gap-4 font-light text-neutral-500">
                     <div>
-                        {guestCount} guests
+                        {guestCount} Seats
                     </div>
                     <div>
-                        {roomCount} rooms
+                        {roomCount} Gasoline Capacity
                     </div>
                 </div>
             </div>

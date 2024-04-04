@@ -28,7 +28,7 @@ const ListingReservation: React.FC<ListingReservationProps> = ({
                     $ {price}
                 </div>
                 <div className='font-light text-neutral-600'>
-                    night
+                    / day
                 </div>
             </div>
             <hr />

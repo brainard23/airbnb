@@ -12,6 +12,7 @@ export default async function Home() {
   if (listings.length === 0) {
     return <EmptyState showReset />;
   }
+
   return (
     <Container>
       <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

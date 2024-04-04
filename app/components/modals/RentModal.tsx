@@ -125,7 +125,7 @@ const RentModal = () => {
     let bodyContent = (
         <div className="flex flex-col gap-8">
             <Heading
-                title="Which of these best description your place?"
+                title="Please describe your car"
                 subtitle="Pick a category"
             />
             <div
@@ -168,8 +168,8 @@ const RentModal = () => {
                 />
                 <Counter
                     value={guestCount}
-                    title="Guest"
-                    subtitle="How many seaters in your car" 
+                    title="Passenger count"
+                    subtitle="How many passenger you have?" 
                     onChange={(value) => setCustomValue('guestCount', value)} />
                 <hr />
                 <Counter
@@ -180,8 +180,8 @@ const RentModal = () => {
                 <hr />
                 <Counter
                     value={bathroomCount}
-                    title="Capacity"
-                    subtitle="what is the maximum capacity of your car"
+                    title="Age"
+                    subtitle="How old is your car?"
                     onChange={(value) => setCustomValue('bathroomCount', value)} />
             </div>
         )

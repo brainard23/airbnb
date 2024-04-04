@@ -20,32 +20,32 @@ export const categories = [
   {
     label: "Toyota",
     icon: toyota,
-    description: "This category is for toyora cars",
+    description: "Brand",
   },
   {
     label: "Nissan",
     icon: nissan,
-    description: "This category is for nissan cars",
+    description: "Brand",
   },
   {
     label: "Ford",
     icon: ford,
-    description: "This category is for ford cars",
+    description: "Brand",
   },
   {
     label: "Tesla",
     icon: tesla,
-    description: "This category is for tesla cars",
+    description: "Brand",
   },
   {
     label: "Suzuki",
     icon: suzuki,
-    description: "This category is for suzuki cars",
+    description: "Brand",
   },
   {
     label: "Chevrolet",
     icon: chevrolet,
-    description: "This category is for chevrolet cars",
+    description: "Brand",
   },
   {
     label: "Honda",
