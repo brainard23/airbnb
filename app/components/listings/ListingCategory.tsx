@@ -5,7 +5,7 @@ import { IconType } from "react-icons";
 
 
 interface ListingCategoryProps {
-    icon: string;
+    icon: string | IconType;
     label: string;
     description: string;
 }
