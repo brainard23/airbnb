@@ -16,7 +16,7 @@ const TripsPage = async () => {
   }
 
   const reservations = await getReservations({
-    userId: currentUser.id,
+    userId: currentUser?.id,
   });
   
   if (reservations.length === 0) {

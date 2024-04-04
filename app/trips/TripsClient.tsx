@@ -10,13 +10,13 @@ import { toast } from "react-hot-toast";
 import ListingCard from "../components/listings/ListingCard";
 
 interface TripsClientProps {
-  reservations?: SafeReservation[];
-  currentUSer?: SafeUser | null;
+  reservations?: SafeReservation[] | any[];
+  currentUser?: SafeUser | null;
 }
 
 const TripsClient: React.FC<TripsClientProps> = ({
   reservations,
-  currentUSer,
+  currentUser,
 }) => {
   const router = useRouter();
   const [deletingId, setDeleting] = useState("");
@@ -48,7 +48,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
         subtitle="Where you've been and where you're goin"
       />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-        {reservations.map((reservation) => (
+        {reservations?.map((reservation) => (
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -57,7 +57,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
             onAction={onCancel}
             disabled={deletingId === reservation.id}
             actionLabel="Cancel Reservation"
-            currentUser={currentUSer}
+            currentUser={currentUser}
           />
         ))}
       </div>
