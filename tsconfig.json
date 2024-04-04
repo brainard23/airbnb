@@ -20,6 +20,9 @@
       }
     ],
     "paths": {
+      "world-countries": [
+        "./types/world-countries/index.d.ts"
+     ],
       "@/*": ["./*"]
     }
   },
